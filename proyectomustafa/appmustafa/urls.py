@@ -17,9 +17,10 @@ Including another URLconf
 
 from django.urls import path
 from . import views
+from .views import *
 urlpatterns = [
     path('', views.principal, name="principal"),
-    # path('animales/', views.animales, name="animales"),
+    path('animales/', views.animales, name="animales"),
     # path('animales/<int:pk>', views.verAnimales, name="verAnimales"),
     # path('noticias/', views.noticias, name="noticias"),
     # path('noticias/<int:pk>', views.verNoticias, name="verNoticias"),
@@ -28,10 +29,10 @@ urlpatterns = [
     # path('login/', views.login, name="login"),
     # path('usuario/', views.usuario, name="usuario"),
     # path('usuario/animalesQueridos', views.animalesQueridos, name="animalesQueridos"),
-    # path('usuario/admin/crearAnimal', views.crearAnimal, name="crearAnimal"),
+    path('usuario/admin/crearAnimal', CrearAnimales.as_view(), name="crearAnimales"),
     # path('usuario/admin/editarAnimal', views.editarAnimal, name="editarAnimal"),
     # path('usuario/admin/borrarAnimal', views.borrarAnimal, name="borrarAnimal"),
-    # path('usuario/admin/crearNoticia', views.crearNoticia, name="crearNoticia"),
+    path('usuario/admin/crearNoticia', CrearNoticias.as_view(), name="crearNoticias"),
     # path('usuario/admin/editarNoticia', views.editarNoticia, name="editarNoticia"),
     # path('usuario/admin/borrarNoticia', views.borrarNoticia, name="borrarNoticia"),
     # path('usuario/admin/datosAnimales', views.datosAnimales, name="datosAnimales"),

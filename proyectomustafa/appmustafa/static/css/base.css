@@ -2,11 +2,23 @@ nav{
     display: flex;
     background-color: red;
 }
+.contieneLinksNav{
+    
+}
 #contenedorContenidoNav{
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 1em;
-    margin-right: 1em;
+    margin-right: 0.5em;
     width: 100%;
+    font-size: 40px;
+}
+#iconoUser{
+    width: 12%;
+    transition: all 0.3s;
+}
+#iconoUser:hover{
+    width: 13%;
+    
 }
