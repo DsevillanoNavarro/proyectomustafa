@@ -4,14 +4,10 @@ from .models import Animal, Noticia
 from .forms import animales_form, noticias_form
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.views.generic import TemplateView
 
 def principal(request):
     return render(request, 'appmustafa/principal.html')
-def animales(request):
-    return render(request, 'appmustafa/animales.html')
-def noticias(request):
-    return render(request, 'appmustafa/noticias.html')
 
 class Animales(ListView):
     model=Animal
@@ -49,6 +45,36 @@ class CrearNoticias(CreateView):
     form_class = noticias_form
     template_name = 'appmustafa/crearNoticias.html'
     success_url = reverse_lazy('noticias')
-    
 
+class UserMenuView(TemplateView):
+    template_name = 'appmustafa/usuario.html'
     
+class CrearNoticias(LoginRequiredMixin, CreateView):
+    model=Noticia
+    form_class = noticias_form
+    template_name = 'appmustafa/crearNoticias.html'
+    success_url = reverse_lazy('listarNoticias')
+    
+class ListarNoticias(ListView):
+    model=Noticia
+    template_name='appmustafa/listarNoticiasAdmin.html'
+    context_object_name = 'noticias'
+    
+class EditarNoticias(UpdateView):
+    model=Noticia
+    form_class = noticias_form
+    template_name = 'appmustafa/editarNoticias.html'
+    success_url = reverse_lazy('listarNoticias')
+class BorrarNoticias(DeleteView):
+    model=Noticia
+    template_name = 'appmustafa/borrarNoticias.html'
+    success_url = reverse_lazy('listarNoticias')
+
+class Noticias(ListView):
+    model=Noticia
+    template_name='appmustafa/noticias.html'
+    context_object_name = 'noticias'
+class DetallesNoticias(DetailView):
+    model = Noticia
+    template_name = 'appmustafa/detalleNoticia.html' 
+    context_object_name = 'noticia'

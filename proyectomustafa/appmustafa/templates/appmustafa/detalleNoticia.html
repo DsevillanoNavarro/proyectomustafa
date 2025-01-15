@@ -1,0 +1,12 @@
+{% extends 'appmustafa/base.html' %}
+
+{% block titulo %}Detalles de la noticia{% endblock %}
+
+{% block contenido %}
+    <h2>Detalles de la noticia</h2>
+    <img src="{{ noticia.imagen.url }}" alt="">
+    <p>Titulo: {{ noticia.titulo }}</p>
+    <p>Contenido: {{ noticia.contenido }}</p>
+    <p>Fecha de publiacacion: {{ noticia.fecha_publicacion }}</p>
+    <a href="{% url 'animales' %}">Volver a la lista</a>
+{% endblock %}

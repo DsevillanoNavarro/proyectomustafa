@@ -16,26 +16,33 @@ Including another URLconf
 """
 
 from django.urls import path
+
+from proyectomustafa import settings
 from . import views
 from .views import *
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', views.principal, name="principal"),
     path('animales/', Animales.as_view(), name="animales"),
     path('animales/<int:pk>', DetallesAnimales.as_view(), name="detalleAnimales"),
-    # path('noticias/', views.noticias, name="noticias"),
-    # path('noticias/<int:pk>', views.verNoticias, name="verNoticias"),
+    path('noticias/', Noticias.as_view(), name="noticias"),
+    path('noticias/<int:pk>', DetallesNoticias.as_view(), name="detalleNoticias"),
     # path('contacto/', views.contacto, name="contacto"),
     # path('registro/', views.registro, name="registro"),
     # path('login/', views.login, name="login"),
-    # path('usuario/', views.usuario, name="usuario"),
+    path('usuario/', UserMenuView.as_view(), name="usuario"),
     # path('usuario/animalesQueridos', views.animalesQueridos, name="animalesQueridos"),
     path('usuario/admin/crearAnimal', CrearAnimales.as_view(), name="crearAnimales"),
     path('usuario/admin/listarAnimales', ListarAnimales.as_view(), name="listarAnimales"),
     path('usuario/admin/editarAnimal/<int:pk>', EditarAnimales.as_view(), name="editarAnimal"),
     path('usuario/admin/borrarAnimal/<int:pk>', BorrarAnimales.as_view(), name="borrarAnimal"),
     path('usuario/admin/crearNoticia', CrearNoticias.as_view(), name="crearNoticias"),
-    # path('usuario/admin/editarNoticia', views.editarNoticia, name="editarNoticia"),
-    # path('usuario/admin/borrarNoticia', views.borrarNoticia, name="borrarNoticia"),
+    path('usuario/admin/listarNoticias', ListarNoticias.as_view(), name="listarNoticias"),
+    path('usuario/admin/editarNoticia/<int:pk>', EditarNoticias.as_view(), name="editarNoticias"),
+    path('usuario/admin/borrarNoticia/<int:pk>', BorrarNoticias.as_view(), name="borrarNoticias"),
     # path('usuario/admin/datosAnimales', views.datosAnimales, name="datosAnimales"),
     # path('usuario/admin/datosNoticias', views.datosNoticias, name="datosNoticias"),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

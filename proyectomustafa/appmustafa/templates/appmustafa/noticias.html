@@ -1,0 +1,15 @@
+{% extends 'appmustafa/base.html' %}
+{% block titulo %}Noticias{% endblock titulo %}
+{% block contenido %}
+
+    {% for noticia in noticias %}
+    <img src="{{ noticia.imagen.url }}" alt="Imagen de {{ noticia.titulo }}" width="300">
+    <div class="card-body">
+      <h5 class="card-title">{{noticia}}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="{% url 'detalleNoticias' pk=noticia.pk  %}" class="btn btn-primary">Go somewhere</a>
+    </div>
+    {% endfor %}
+
+
+{% endblock contenido %}

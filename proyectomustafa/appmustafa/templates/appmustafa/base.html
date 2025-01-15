@@ -24,7 +24,7 @@
         <div id="contenedorContenidoNav" class="collapse col w-100">
             <div class="contieneLinksNav col-2"><a href="{% url 'animales' %}" style="text-decoration: none;">Animales</a></div>
 
-            <div class="contieneLinksNav col-2"><a href="{% url 'animales' %}" style="text-decoration: none;">Noticias</a></div>
+            <div class="contieneLinksNav col-2"><a href="{% url 'noticias' %}" style="text-decoration: none;">Noticias</a></div>
             
             <div class="contieneLinksNav col-2 "><a href="{% url 'animales' %}" style="text-decoration: none;">Contacto</a></div>
             
@@ -33,7 +33,7 @@
                 {% if user.is_authenticated %}
                 <ul class="dropdown-menu">
                   {{ user.first_name }}
-                  <li><a class="dropdown-item" href="#">{{ user.username}}</a></li>
+                  <li><a class="dropdown-item" href="{% url 'usuario' %}">{{ user.username}}</a></li>
                   <li><form class="dropdown-item" action="{% url 'logout' %}" method="post">
                     {% csrf_token %} 
                     <button type="submit" class="">Cerrar Sesión</button>
@@ -41,7 +41,7 @@
                 </ul>
                 {% else %}
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                  <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesión</a></li>
                   <li><a class="dropdown-item" href="#">Registrarse</a></li>
                 </ul>
                 {% endif %}

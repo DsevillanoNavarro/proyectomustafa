@@ -1,0 +1,30 @@
+{% extends 'appmustafa/base.html' %}
+{% block titulo %}
+    LISTADO ANIMALES
+{% endblock titulo %}
+    
+{% block contenido %}
+<div class="container-fluid d-flex">
+<div class="container-fluid  w-25 m-0" style="">
+<ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="">Información</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'listarAnimales' %}">Animales</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'listarNoticias' %}">Noticias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-disabled="true" href="">Comentarios</a>
+    </li>
+  </ul>
+</div>
+    <div>
+        <h1>Nombre: {{ user.username }}</h1>
+        <p>Fecha de creación de la cuenta: {{ user.date_joined }}</p>
+        <p>Ultimo inicio de sesión: {{ user.last_login }}</p>
+    </div>
+</div>
+{% endblock contenido %}

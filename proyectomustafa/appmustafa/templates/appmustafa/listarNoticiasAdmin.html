@@ -1,0 +1,14 @@
+{% extends 'appmustafa/base.html' %}
+{% block titulo %}
+    LISTADO ANIMALES
+{% endblock titulo %}
+    
+{% block contenido %}
+<ul class="list-group">
+{% for noticia in noticias %}
+<li class="list-group-item " aria-current="true"><a class="btn btn-primary" href="{% url 'editarNoticias' pk=noticia.pk  %}">{{noticia}}</a> &#9;<a class="btn btn-danger" href="{% url 'borrarNoticias' pk=noticia.pk  %}">Borrar</a></li>
+{% endfor %}
+<ul>
+<a class="btn btn-success" href="{% url 'crearNoticias' %}">CREAR</a>
+<a class="btn btn-warning" href="{%url 'usuario' %}">VOLVER</a>
+{% endblock contenido %}
