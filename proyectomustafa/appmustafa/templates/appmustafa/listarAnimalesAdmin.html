@@ -1,0 +1,14 @@
+{% extends 'appmustafa/base.html' %}
+{% block titulo %}
+    LISTADO ANIMALES
+{% endblock titulo %}
+    
+{% block contenido %}
+<ul class="list-group">
+{% for animal in animales %}
+<li class="list-group-item " aria-current="true"><a class="btn btn-primary" href="{% url 'editarAnimal' pk=animal.pk  %}">{{animal}}</a> &#9;<a class="btn btn-danger" href="{% url 'borrarAnimal' pk=animal.pk  %}">Borrar</a></li>
+{% endfor %}
+<ul>
+<a class="btn btn-success" href="{% url 'crearAnimales' %}">CREAR</a>
+<a class="btn btn-warning" href="{%url 'principal' %}">VOLVER</a>
+{% endblock contenido %}

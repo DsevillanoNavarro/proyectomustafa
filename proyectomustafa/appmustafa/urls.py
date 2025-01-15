@@ -20,8 +20,8 @@ from . import views
 from .views import *
 urlpatterns = [
     path('', views.principal, name="principal"),
-    path('animales/', views.animales, name="animales"),
-    # path('animales/<int:pk>', views.verAnimales, name="verAnimales"),
+    path('animales/', Animales.as_view(), name="animales"),
+    path('animales/<int:pk>', DetallesAnimales.as_view(), name="detalleAnimales"),
     # path('noticias/', views.noticias, name="noticias"),
     # path('noticias/<int:pk>', views.verNoticias, name="verNoticias"),
     # path('contacto/', views.contacto, name="contacto"),
@@ -30,8 +30,9 @@ urlpatterns = [
     # path('usuario/', views.usuario, name="usuario"),
     # path('usuario/animalesQueridos', views.animalesQueridos, name="animalesQueridos"),
     path('usuario/admin/crearAnimal', CrearAnimales.as_view(), name="crearAnimales"),
-    # path('usuario/admin/editarAnimal', views.editarAnimal, name="editarAnimal"),
-    # path('usuario/admin/borrarAnimal', views.borrarAnimal, name="borrarAnimal"),
+    path('usuario/admin/listarAnimales', ListarAnimales.as_view(), name="listarAnimales"),
+    path('usuario/admin/editarAnimal/<int:pk>', EditarAnimales.as_view(), name="editarAnimal"),
+    path('usuario/admin/borrarAnimal/<int:pk>', BorrarAnimales.as_view(), name="borrarAnimal"),
     path('usuario/admin/crearNoticia', CrearNoticias.as_view(), name="crearNoticias"),
     # path('usuario/admin/editarNoticia', views.editarNoticia, name="editarNoticia"),
     # path('usuario/admin/borrarNoticia', views.borrarNoticia, name="borrarNoticia"),

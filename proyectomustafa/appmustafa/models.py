@@ -5,7 +5,7 @@ class Animal(models.Model):
     nombre=models.CharField(max_length=50)
     fecha_nacimiento=models.DateField()
     situacion= models.TextField(max_length=750)
-    imagen=models.ImageField(upload_to='images/animales') 
+    imagen=models.ImageField(upload_to='images/animales'  ) 
 class Noticia(models.Model):
     titulo=models.CharField(max_length=100)
     imagen=models.ImageField(upload_to='images/noticias') 

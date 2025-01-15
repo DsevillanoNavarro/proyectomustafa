@@ -29,12 +29,23 @@
             <div class="contieneLinksNav col-2 "><a href="{% url 'animales' %}" style="text-decoration: none;">Contacto</a></div>
             
                 <img id="iconoUser" class="dropdown-toggle img-fluid col-4"   data-bs-toggle="dropdown" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" ></img>
-              
+                
+                {% if user.is_authenticated %}
+                <ul class="dropdown-menu">
+                  {{ user.first_name }}
+                  <li><a class="dropdown-item" href="#">{{ user.username}}</a></li>
+                  <li><form class="dropdown-item" action="{% url 'logout' %}" method="post">
+                    {% csrf_token %} 
+                    <button type="submit" class="">Cerrar Sesión</button>
+                  </form></li>
+                </ul>
+                {% else %}
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
                   <li><a class="dropdown-item" href="#">Registrarse</a></li>
                 </ul>
-               
+                {% endif %}
+                
             
         </div>
       </nav>

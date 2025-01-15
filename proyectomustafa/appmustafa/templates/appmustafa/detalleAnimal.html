@@ -1,0 +1,12 @@
+{% extends 'appmustafa/base.html' %}
+
+{% block titulo %}Detalles del Animal{% endblock %}
+
+{% block contenido %}
+    <h2>Detalles del Animal</h2>
+    <p>{{imagen}}</p>
+    <p>Nombre: {{ animal.nombre }}</p>
+    <p>Fecha de nacimiento: {{ animal.fecha_nacimiento }}</p>
+    <p>Situación: {{ animal.situacion }}</p>
+    <a href="{% url 'animales' %}">Volver a la lista</a>
+{% endblock %}

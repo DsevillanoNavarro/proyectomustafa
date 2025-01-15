@@ -1,0 +1,11 @@
+{% extends 'appmustafa/base.html' %}
+{% block titulo %}INICIO SESIÓN{% endblock titulo %}
+{% block contenido %}
+<h1>Inciar Sesión</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Iniciar sesión</button>
+</form>
+{% endblock contenido %}
